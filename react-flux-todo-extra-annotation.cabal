@@ -1,0 +1,35 @@
+name:                react-flux-todo-extra-annotation
+version:             0.1.0.0
+synopsis:            Initial project template from stack
+description:         Please see README.md
+homepage:            https://github.com/adarqui/react-flux-todo-extra-annotation#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Andrew Darqui
+maintainer:          andrew.darqui@gmail.com
+copyright:           2016 Andrew Darqui
+category:            Development
+build-type:          Simple
+-- extra-source-files:
+cabal-version:       >=1.10
+
+executable react-flux-todo-extra-annotation-exe
+  hs-source-dirs:      app
+  main-is:             Main.hs
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base
+                     , react-flux-todo-extra-annotation
+  default-language:    Haskell2010
+
+test-suite react-flux-todo-extra-annotation-test
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Spec.hs
+  build-depends:       base
+                     , react-flux-todo-extra-annotation
+  ghc-options:         -threaded -rtsopts -with-rtsopts=-N
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/adarqui/react-flux-todo-extra-annotation
