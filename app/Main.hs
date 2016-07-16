@@ -7,11 +7,14 @@ import           TodoViews
 
 
 
+-- * reactRender :: Typeable props => String -> ReactView props -> props -> IO ()
+-- * todoApp :: ReactView ()
+--
 main :: IO ()
 main = do
-  -- * reactRender :: Typeable props => String -> ReactView props -> props -> IO ()
-  -- * todoApp :: ReactView ()
   reactRender
     "todoapp" -- * String
     todoApp   -- * ReactView props
+              -- * ReactView ()
     ()        -- * props
+              -- * ()
