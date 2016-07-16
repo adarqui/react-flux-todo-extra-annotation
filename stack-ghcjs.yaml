@@ -1,0 +1,23 @@
+flags: {}
+
+resolver: lts-6.6
+compiler: ghcjs-0.2.0.900006006_ghc-7.10.3
+
+compiler-check: match-exact
+
+setup-info:
+  ghcjs:
+    source:
+      ghcjs-0.2.0.900006006_ghc-7.10.3:
+         url: "https://tolysz.org/ghcjs/lts-6.6-900006006.tar.gz"
+
+allow-newer: true
+
+packages:
+- location: '.'
+
+extra-deps:
+- ref-tf-0.4
+- these-0.6.1.0
+- react-flux-1.1.1
+- ghcjs-dom-0.2.4.0
