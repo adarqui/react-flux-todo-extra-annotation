@@ -1,24 +1,33 @@
-{-# LANGUAGE OverloadedStrings, BangPatterns #-}
+{-# LANGUAGE BangPatterns      #-}
+{-# LANGUAGE OverloadedStrings #-}
+
+
 
 -- | The division between a view and a component is arbitrary, but for me components are pieces that
 -- are re-used many times for different purposes.  In the TODO app, there is one component for the
 -- text box.
 module TodoComponents where
 
-import Data.Typeable (Typeable)
-import React.Flux
-import Data.JSString (JSString)
-import qualified Data.Text as T
+
+
+import           Data.Text     (Text)
+import qualified Data.Text     as T
+import           Data.Typeable (Typeable)
+import           React.Flux
+
+
 
 -- | The properties for the text input component.  Note how we can pass anything, including
 -- functions, as the properties; the only requirement is an instance of Typeable.
 data TextInputArgs = TextInputArgs {
-      tiaId :: Maybe JSString
-    , tiaClass :: JSString
-    , tiaPlaceholder :: JSString
-    , tiaOnSave :: T.Text -> [SomeStoreAction]
-    , tiaValue :: Maybe T.Text
+      tiaId          :: Maybe Text
+    , tiaClass       :: Text
+    , tiaPlaceholder :: Text
+    , tiaOnSave      :: T.Text -> [SomeStoreAction]
+    , tiaValue       :: Maybe T.Text
 } deriving (Typeable)
+
+
 
 -- | The text input stateful view.  The state is the text that has been typed into the textbox
 -- but not yet saved.  The save is triggered either on enter or blur, which resets the state/content
@@ -31,7 +40,7 @@ todoTextInput = defineStatefulView "todo text input" "" $ \curText args ->
         [ "className" &= tiaClass args
         , "placeholder" &= tiaPlaceholder args
         , "value" &= curText -- using value here creates a controlled component: https://facebook.github.io/react/docs/forms.html
-        , "autoFocus" &= True
+--        , "autoFocus" &= True
 
         -- Update the current state with the current text in the textbox, sending no actions
         , onChange $ \evt _ -> ([], Just $ target evt "value")
